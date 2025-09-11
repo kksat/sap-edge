@@ -99,6 +99,17 @@ rosa-terraform-apply: rosa-terraform-plan  ## Run terraform apply
 	export TF_VAR_vpc_name="${CLUSTER_NAME}-vpc"
 	$(TERRAFORM) apply
 
+.PHONY: rosa-terraform-destroy
+.ONESHELL:
+rosa-terraform-destroy:  ## Run terraform destroy
+	$(call required-environment-variables,CLUSTER_NAME ROSA_VERSION AWS_REGION) 
+	cd $(TERRAFORM_DIRECTORY)
+	export TF_VAR_cluster_name="${CLUSTER_NAME}"
+	export TF_VAR_rosa_version="${ROSA_VERSION}"
+	export TF_VAR_aws_region="${AWS_REGION}"
+	export TF_VAR_vpc_name="${CLUSTER_NAME}-vpc"
+	$(TERRAFORM) destroy
+
 .PHONY: tflint
 tflint:  ## Run tflint
 	@cd $(TERRAFORM_DIRECTORY) && tflint
