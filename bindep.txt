@@ -2,6 +2,7 @@ jq
 git
 openshift-cli
 rosa-cli
+ocm
 tfsec [dev]
 checkov [dev]
 tflint [dev]
