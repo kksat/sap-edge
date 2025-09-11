@@ -77,7 +77,7 @@ rosa-terraform-init: $(TERRAFORM_DIRECTORY)/backend.config  ## Initialize Terraf
 
 .PHONY: rosa-terraform-plan
 .ONESHELL:
-rosa-terraform-plan: rosa-terraform-init  ## Run terraform plan with terraform.tfvars
+rosa-terraform-plan: rosa-terraform-init  ## Run terraform plan
 	$(call required-environment-variables,TF_VAR_admin_password TF_VAR_admin_username)
 	$(call required-environment-variables,CLUSTER_NAME ROSA_VERSION AWS_REGION) 
 	cd $(TERRAFORM_DIRECTORY)
