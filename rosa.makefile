@@ -87,6 +87,18 @@ rosa-terraform-plan: rosa-terraform-init  ## Run terraform plan
 	export TF_VAR_vpc_name="${CLUSTER_NAME}-vpc"
 	$(TERRAFORM) plan
 
+.PHONY: rosa-terraform-apply
+.ONESHELL:
+rosa-terraform-apply: rosa-terraform-plan  ## Run terraform apply
+	$(call required-environment-variables,TF_VAR_admin_password TF_VAR_admin_username)
+	$(call required-environment-variables,CLUSTER_NAME ROSA_VERSION AWS_REGION) 
+	cd $(TERRAFORM_DIRECTORY)
+	export TF_VAR_cluster_name="${CLUSTER_NAME}"
+	export TF_VAR_rosa_version="${ROSA_VERSION}"
+	export TF_VAR_aws_region="${AWS_REGION}"
+	export TF_VAR_vpc_name="${CLUSTER_NAME}-vpc"
+	$(TERRAFORM) apply
+
 .PHONY: tflint
 tflint:  ## Run tflint
 	@cd $(TERRAFORM_DIRECTORY) && tflint
