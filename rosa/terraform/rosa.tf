@@ -6,7 +6,6 @@
 
 module "rosa-hcp" {
   source                 = "git::https://github.com/terraform-redhat/terraform-rhcs-rosa-hcp.git?ref=68c20d8"
-  version                = "1.6.9"
   cluster_name           = var.cluster_name
   openshift_version      = var.rosa_version
   account_role_prefix    = var.cluster_name
