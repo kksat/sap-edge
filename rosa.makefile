@@ -80,6 +80,7 @@ rosa-terraform-init: $(TERRAFORM_DIRECTORY)/backend.config  ## Initialize Terraf
 rosa-terraform-plan: rosa-terraform-init  ## Run terraform plan
 	$(call required-environment-variables,TF_VAR_admin_password TF_VAR_admin_username)
 	$(call required-environment-variables,CLUSTER_NAME ROSA_VERSION AWS_REGION) 
+	$(call required-environment-variables,TF_VAR_rosa_token) 
 	cd $(TERRAFORM_DIRECTORY)
 	export TF_VAR_cluster_name="${CLUSTER_NAME}"
 	export TF_VAR_rosa_version="${ROSA_VERSION}"
@@ -92,6 +93,7 @@ rosa-terraform-plan: rosa-terraform-init  ## Run terraform plan
 rosa-terraform-apply: rosa-terraform-plan  ## Run terraform apply
 	$(call required-environment-variables,TF_VAR_admin_password TF_VAR_admin_username)
 	$(call required-environment-variables,CLUSTER_NAME ROSA_VERSION AWS_REGION) 
+	$(call required-environment-variables,TF_VAR_rosa_token) 
 	cd $(TERRAFORM_DIRECTORY)
 	export TF_VAR_cluster_name="${CLUSTER_NAME}"
 	export TF_VAR_rosa_version="${ROSA_VERSION}"

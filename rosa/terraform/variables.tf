@@ -5,6 +5,12 @@
 
 # SPDX-License-Identifier: Apache-2.0
 
+variable "rosa_token" {
+  description = "ROSA token"
+  type        = string
+  sensitive   = true
+}
+
 variable "aws_region" {
   description = "AWS region for resources"
   type        = string

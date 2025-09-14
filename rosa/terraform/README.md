@@ -58,6 +58,8 @@ TERRAFORM_BACKEND_S3_KEY=
 TERRAFORM_BACKEND_S3_AWS_REGION=
 TERRAFORM_BACKEND_S3_DYNAMODB_TABLE=
 ```
+Red Hat OpenShift Service on AWS (ROSA): https://cloud.redhat.com/openshift/token/rosa
+OpenShift Cluster Manager (OCM): https://cloud.redhat.com/openshift/token
 
 ### Optional Variables
 
